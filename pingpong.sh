@@ -62,8 +62,8 @@ elif [[ "$CHOICE" -eq 2 ]]; then
     echo ""
 
     echo -e "${BOLD}1.0G 노드 설정 중...${NC}"
-    read -p "EVM 지갑 프라이빗키를 입력하세요 (0G 노드용): " 0GPRIVATE_KEY
-    ./PINGPONG config set --0g="$0GPRIVATE_KEY"
+    read -p "EVM 지갑 프라이빗키를 입력하세요 (0G 노드용): " OGPRIVATE_KEY
+    ./PINGPONG config set --0g="$OGPRIVATE_KEY"
     ./PINGPONG stop --depins=0g
     ./PINGPONG start --depins=0g
     echo ""
