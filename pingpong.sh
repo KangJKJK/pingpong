@@ -85,8 +85,8 @@ elif [[ "$CHOICE" -eq 2 ]]; then
     
     echo -e "${BOLD}3.Grass노드 설정 중..${NC}"
     echo -e "${YELLOW}해당 사이트로 이동하세요: https://app.getgrass.io/dashboard${NC}"
-    echo -e "${YELOOW}F12를 누른 후 상단메뉴바에서 애플리케이션을 클릭하세요${NC}"
-    echo -e "${YELOOW}왼쪽 카테고리바에서 저장용량-로컬스토리지를 클릭하세요${NC}"
+    echo -e "${YELOW}F12를 누른 후 상단메뉴바에서 애플리케이션을 클릭하세요${NC}"
+    echo -e "${YELOW}왼쪽 카테고리바에서 저장용량-로컬스토리지를 클릭하세요${NC}"
     read -p "userID라고 표기된 구문을 복사해서 적으세요(""는 제외): " GRASSID
     ./PINGPONG config set --grass.access="$GRASSID" --grass.refresh="$GRASSID"
     ./PINGPONG stop --depins=grass
@@ -107,6 +107,7 @@ elif [[ "$CHOICE" -eq 2 ]]; then
     ./PINGPONG config set --dawn.email="$DWEMAIL"  --dawn.pwd="$DWPW"
     ./PINGPONG stop --depins=dawn
     ./PINGPONG start --depins=dawn
+fi
 
 echo -e "${Yellow}노드를 새로 설치하신분들은 스크립트를 재실행하여 Depin설정을 마무리해주세요.${NC}"
 echo -e "${GREEN}모든 작업이 완료되었습니다. 컨트롤+A+D로 스크린을 종료해주세요.${NC}"
