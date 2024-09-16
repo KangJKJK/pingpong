@@ -43,7 +43,7 @@ if [[ "$CHOICE" -eq 1 ]]; then
 
     # pingpong 노드 설정 안내
     echo -e "${BOLD}${CYAN}pingpong 노드를 설정 중...${NC}"
-    echo -e "${YELLOW}해당사이트에 방문하세요${NC}"
+    echo -e "${YELLOW}해당 사이트에 방문하세요${NC}"
     echo -e "${YELLOW}https://app.pingpong.build/mining/devices${NC}"
     echo -e "${YELLOW}Add device를 누른 후 Device key를 복사하세요.${NC}"
 
@@ -56,59 +56,59 @@ if [[ "$CHOICE" -eq 1 ]]; then
 
 elif [[ "$CHOICE" -eq 2 ]]; then
     # Pingpong Depin 설정 단계
-    echo -e "${Green}${CYAN}Pingpong Depin 설정을 시작합니다.${NC}"
+    echo -e "${GREEN}${CYAN}Pingpong Depin 설정을 시작합니다.${NC}"
     echo ""
 
-    echo -e "${YELLOW}Depin 설정을 진행하려면 아래 단계를 따르세요.${NC}"
-    echo ""
-    
-    echo -e "${BOLD}1.0G노드 설정 중..${NC}"
-    read -p "EVM지갑 프라이빗키를 입력하세요(0G노드용): " 0GPRIVATE_KEY
+    echo -e "${BOLD}1.0G 노드 설정 중...${NC}"
+    read -p "EVM 지갑 프라이빗키를 입력하세요 (0G 노드용): " 0GPRIVATE_KEY
     ./PINGPONG config set --0g="$0GPRIVATE_KEY"
     ./PINGPONG stop --depins=0g
     ./PINGPONG start --depins=0g
     echo ""
-    
-    echo -e "${BOLD}2.AIOZ노드 설정 중..${NC}"
+
+    echo -e "${BOLD}2. AIOZ 노드 설정 중...${NC}"
     curl -LO https://github.com/AIOZNetwork/aioz-dcdn-cli-node/files/13561211/aioznode-linux-amd64-1.1.0.tar.gz
     tar xzf aioznode-linux-amd64-1.1.0.tar.gz
     mv aioznode-linux-amd64-1.1.0 aioznode
     ./aioznode keytool new --save-priv-key privkey.json
-    echo -e "${BOLD}${CYAN}privkey.json 파일의 내용은 다음과 같습니다.:${NC}"
+    echo -e "${BOLD}${CYAN}privkey.json 파일의 내용은 다음과 같습니다:${NC}"
     cat privkey.json
     echo ""
-    read -p "priv_key안에서 개인키로 보이는 내용만 복사해서 적으세요(""는 제외): " OZPRIVATE_KEY
+    read -p "privkey.json 안에서 개인키로 보이는 내용만 복사해서 적으세요 (\"\"는 제외): " OZPRIVATE_KEY
     ./PINGPONG config set --aioz="$OZPRIVATE_KEY"
     ./PINGPONG stop --depins=aioz
     ./PINGPONG start --depins=aioz
     echo ""
-    
-    echo -e "${BOLD}3.Grass노드 설정 중..${NC}"
+
+    echo -e "${BOLD}3. Grass 노드 설정 중...${NC}"
     echo -e "${YELLOW}해당 사이트로 이동하세요: https://app.getgrass.io/dashboard${NC}"
-    echo -e "${YELOW}F12를 누른 후 상단메뉴바에서 애플리케이션을 클릭하세요${NC}"
-    echo -e "${YELOW}왼쪽 카테고리바에서 저장용량-로컬스토리지를 클릭하세요${NC}"
-    read -p "userID라고 표기된 구문을 복사해서 적으세요(""는 제외): " GRASSID
+    echo -e "${YELLOW}F12를 누른 후 상단 메뉴바에서 애플리케이션을 클릭하세요${NC}"
+    echo -e "${YELLOW}왼쪽 카테고리바에서 저장용량 - 로컬스토리지를 클릭하세요${NC}"
+    read -p "userID라고 표기된 구문을 복사해서 적으세요 (\"\"는 제외): " GRASSID
     ./PINGPONG config set --grass.access="$GRASSID" --grass.refresh="$GRASSID"
     ./PINGPONG stop --depins=grass
     ./PINGPONG start --depins=grass
+    echo ""
 
-    echo -e "${BOLD}4.BlockMesh노드 설정 중..${NC}"
+    echo -e "${BOLD}4. BlockMesh 노드 설정 중...${NC}"
     echo -e "${YELLOW}해당 사이트로 이동하여: https://app.blockmesh.xyz/register?invite_code=kangjk${NC}"
-    read -p "회원가입을 진행한 Email 적으세요: " BMEMAIL
+    read -p "회원가입을 진행한 Email을 적으세요: " BMEMAIL
     read -p "패스워드를 입력하세요: " BMPW
     ./PINGPONG config set --blockmesh.email="$BMEMAIL" --blockmesh.pwd="$BMPW"
     ./PINGPONG stop --depins=blockmesh
     ./PINGPONG start --depins=blockmesh
+    echo ""
 
-    echo -e "${BOLD}5.DAWN노드 설정 중..${NC}"
-    echo -e "${YELLOW}크롬익스텐션을 다운하여 회원가입을 진행하세요: Ref=i4r46rfl${NC}"
-    read -p "회원가입을 진행한 Email 적으세요: " DWEMAIL
+    echo -e "${BOLD}5. DAWN 노드 설정 중...${NC}"
+    echo -e "${YELLOW}크롬 익스텐션을 다운하여 회원가입을 진행하세요: Ref=i4r46rfl${NC}"
+    read -p "회원가입을 진행한 Email을 적으세요: " DWEMAIL
     read -p "패스워드를 입력하세요: " DWPW
-    ./PINGPONG config set --dawn.email="$DWEMAIL"  --dawn.pwd="$DWPW"
+    ./PINGPONG config set --dawn.email="$DWEMAIL" --dawn.pwd="$DWPW"
     ./PINGPONG stop --depins=dawn
     ./PINGPONG start --depins=dawn
+
+    echo -e "${YELLOW}노드를 새로 설치하신 분들은 스크립트를 재실행하여 Depin 설정을 마무리해주세요.${NC}"
 fi
 
-echo -e "${Yellow}노드를 새로 설치하신분들은 스크립트를 재실행하여 Depin설정을 마무리해주세요.${NC}"
 echo -e "${GREEN}모든 작업이 완료되었습니다. 컨트롤+A+D로 스크린을 종료해주세요.${NC}"
 echo -e "${GREEN}스크립트 작성자: https://t.me/kjkresearch${NC}"
