@@ -110,5 +110,5 @@ elif [[ "$CHOICE" -eq 2 ]]; then
     ./PINGPONG start --depins=dawn
 fi
 
-echo -e "${GREEN}모든 작업이 완료되었습니다. 컨트롤+A+D로 스크린을 종료해주세요.${NC}"
+echo -e "${GREEN}모든 작업이 완료되었습니다. https://app.pingpong.build/mining/devices 에서 확인하세요${NC}"
 echo -e "${GREEN}스크립트 작성자: https://t.me/kjkresearch${NC}"
