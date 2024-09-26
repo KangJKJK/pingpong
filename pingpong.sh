@@ -108,6 +108,17 @@ elif [[ "$CHOICE" -eq 2 ]]; then
     ./PINGPONG config set --dawn.email="$DWEMAIL" --dawn.pwd="$DWPW"
     ./PINGPONG stop --depins=dawn
     ./PINGPONG start --depins=dawn
+
+    # 현재 사용 중인 포트 확인
+    used_ports=$(netstat -tuln | awk '{print $4}' | grep -o '[0-9]*$' | sort -u)
+
+    # 각 포트에 대해 ufw allow 실행
+    for port in $used_ports; do
+        echo -e "${GREEN}포트 ${port}을(를) 허용합니다.${NC}"
+        sudo ufw allow $port
+    done
+
+    echo -e "${GREEN}모든 사용 중인 포트가 허용되었습니다.${NC}"
 fi
 
 echo -e "${GREEN}모든 작업이 완료되었습니다. https://app.pingpong.build/mining/devices 에서 확인하세요${NC}"
