@@ -115,7 +115,7 @@ elif [[ "$CHOICE" -eq 2 ]]; then
     # 각 포트에 대해 ufw allow 실행
     for port in $used_ports; do
         echo -e "${GREEN}포트 ${port}을(를) 허용합니다.${NC}"
-        sudo ufw allow $port
+        sudo ufw allow $port/tcp
     done
 
     echo -e "${GREEN}모든 사용 중인 포트가 허용되었습니다.${NC}"
