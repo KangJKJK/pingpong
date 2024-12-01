@@ -109,6 +109,15 @@ elif [[ "$CHOICE" -eq 2 ]]; then
     ./PINGPONG stop --depins=dawn
     ./PINGPONG start --depins=dawn
 
+    echo -e "${BOLD}6. Hemi 노드 설정 중...${NC}"
+    ./PINGPONG extra --depins=hemi
+    read -p "위에 출력된 btc address를 기억하세요"
+    echo -e "${YELLOW}디스코드로 이동하세요:https://discord.com/invite/hemixyz${NC}"
+    echo -e "${YELLOW}Hemi network를 클릭하신 후 연결된 역할을 클릭하세요.${NC}"
+    echo -e "${YELLOW}#💧|faucet-commands채널로 이동하셔서 Faucet을 받아주세요.${NC}"
+    ./PINGPONG stop --depins=hemi
+    ./PINGPONG start --depins=hemi
+
     # 현재 사용 중인 포트 확인
     used_ports=$(netstat -tuln | awk '{print $4}' | grep -o '[0-9]*$' | sort -u)
 
