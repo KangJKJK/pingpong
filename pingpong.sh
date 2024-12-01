@@ -15,7 +15,7 @@ echo ""
 echo -e "${BOLD}${CYAN}1. Pingpong Node 설치${NC}"
 echo -e "${BOLD}${CYAN}2. Pingpong Depin 설정${NC}"
 echo -e "${YELLOW}1번을 선택하여 새로 설치할시 로그가 계속 나오기때문에 컨트롤A+D로 스크립트를 종료해주세요.${NC}"
-echo -e "${YELLOW}컨트롤A+D로 종료후 스크립트를 재실행하여 2번을 선택하고 Depin 설정을 마무리해주세요.${NC}"
+echo -e "${YELLOW}컨트롤A+D로 종료후 5분정도 후에 스크립트를 재실행하여 2번을 선택하고 Depin 설정을 마무리해주세요.${NC}"
 read -p "원하는 작업의 번호를 입력하세요: " CHOICE
 
 if [[ "$CHOICE" -eq 1 ]]; then
