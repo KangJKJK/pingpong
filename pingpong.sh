@@ -64,6 +64,7 @@ elif [[ "$CHOICE" -eq 2 ]]; then
 
     echo -e "${BOLD}1.0G 노드 설정 중...${NC}"
     read -p "EVM 지갑 프라이빗키를 입력하세요 (0G 노드용): " OGPRIVATE_KEY
+    chmod +x ./PINGPONG
     ./PINGPONG config set --0g="$OGPRIVATE_KEY"
     ./PINGPONG stop --depins=0g
     ./PINGPONG start --depins=0g
@@ -78,6 +79,7 @@ elif [[ "$CHOICE" -eq 2 ]]; then
     cat privkey.json
     echo ""
     read -p "privkey.json 안에서 개인키로 보이는 내용만 복사해서 적으세요 (\"\"는 제외): " OZPRIVATE_KEY
+    chmod +x ./PINGPONG
     ./PINGPONG config set --aioz="$OZPRIVATE_KEY"
     ./PINGPONG stop --depins=aioz
     ./PINGPONG start --depins=aioz
@@ -88,6 +90,7 @@ elif [[ "$CHOICE" -eq 2 ]]; then
     echo -e "${YELLOW}F12를 누른 후 상단 메뉴바에서 애플리케이션을 클릭하세요${NC}"
     echo -e "${YELLOW}왼쪽 카테고리바에서 저장용량 - 로컬스토리지를 클릭하세요${NC}"
     read -p "userID라고 표기된 구문을 복사해서 적으세요 (\"\"는 제외): " GRASSID
+    chmod +x ./PINGPONG
     ./PINGPONG config set --grass.access="$GRASSID" --grass.refresh="$GRASSID"
     ./PINGPONG stop --depins=grass
     ./PINGPONG start --depins=grass
@@ -97,6 +100,7 @@ elif [[ "$CHOICE" -eq 2 ]]; then
     echo -e "${YELLOW}해당 사이트로 이동하여: https://app.blockmesh.xyz/register?invite_code=kangjk${NC}"
     read -p "회원가입을 진행한 Email을 적으세요: " BMEMAIL
     read -p "패스워드를 입력하세요: " BMPW
+    chmod +x ./PINGPONG
     ./PINGPONG config set --blockmesh.email="$BMEMAIL" --blockmesh.pwd="$BMPW"
     ./PINGPONG stop --depins=blockmesh
     ./PINGPONG start --depins=blockmesh
@@ -111,6 +115,7 @@ elif [[ "$CHOICE" -eq 2 ]]; then
     ./PINGPONG start --depins=dawn
 
     echo -e "${BOLD}6. Hemi 노드 설정 중...${NC}"
+    chmod +x ./PINGPONG
     ./PINGPONG extra --depins=hemi
     read -p "위에 출력된 btc address를 기억하세요"
     echo -e "${YELLOW}디스코드로 이동하세요:https://discord.com/invite/hemixyz${NC}"
