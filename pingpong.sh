@@ -59,6 +59,7 @@ fi
 elif [[ "$CHOICE" -eq 2 ]]; then
     # Pingpong Depin 설정 단계
     echo -e "${GREEN}${CYAN}Pingpong Depin 설정을 시작합니다.${NC}"
+    chmod +x ./PINGPONG
     echo ""
 
     echo -e "${BOLD}1.0G 노드 설정 중...${NC}"
